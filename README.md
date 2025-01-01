@@ -57,9 +57,5 @@ Inspired by research on microtubules and quantum dynamics. Special thanks to the
 
 ---
 
-### Add This to Your Repository
-1. **Create the README File**:
-   In your project directory, create the file:
-   ```bash
-   nano README.md
+
 
