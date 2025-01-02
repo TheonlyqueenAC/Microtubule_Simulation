@@ -1,0 +1,32 @@
+---
+
+### **Demo Video Tips**
+
+#### Script for Demo:
+1. **Introduction**:
+   - “Welcome to the Microtubule Simulation project! In this video, I’ll walk you through the setup, execution, and output of this simulation.”
+
+2. **Setup**:
+   - Show cloning the repository and installing dependencies:
+     ```bash
+     git clone https://github.com/TheonlyqueenAC/Microtubule_Simulation.git
+     cd Microtubule_Simulation
+     pip install numpy matplotlib
+     ```
+
+3. **Running the Simulation**:
+   - Show running the script:
+     ```bash
+     python microtubule_simulation.py
+     ```
+   - Explain the plot that gets generated (e.g., "This graph shows the evolution of the wave packet's probability density over time").
+
+4. **Customization**:
+   - Highlight modifiable parameters in the code and demonstrate their effects.
+
+5. **Closing**:
+   - “Thank you for watching! Feel free to contribute to the project or share your feedback.”
+
+---
+
+Would you like help recording or editing the demo video, or anything else to refine the contributors guide?
