@@ -11,7 +11,7 @@ dt = 0.01  # Time step size
 time_steps = 300  # Total number of time steps
 
 # Create spatial grid
-x = np.linspace(0, L, N)
+x = np.linspace(0, L, N)  # Create a spatial grid
 
 # Initialize wavefunction: Gaussian packet
 sigma = 1.0  # Width of the wave packet
