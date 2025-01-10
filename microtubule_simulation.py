@@ -49,3 +49,6 @@ plt.title('Time Evolution of Quantum Coherence')
 plt.legend()
 plt.savefig('quantum_coherence_evolution.png')  # Save the plot as a PNG file
 plt.show()
+
+
+quit()
