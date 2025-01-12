@@ -1,14 +1,141 @@
-Submitting Changes
-	1.   Fork the repository and create a new branch: 
-      git checkout -b feature-name
-  
-   2.   Commit your changes with a clear message:
-      git commit -m "Description of your changes"
-   
-   3.   Push your branch and open a pull request on the main repository.
+
+
+# Contributing to Microtubule Simulation
+
+Thank you for considering contributing to the Microtubule Simulation project! Your efforts will improve the quality, usability, and impact of our work. This guide outlines the steps for contributing, coding standards, testing procedures, and the submission process.
 
 ---
 
+## 1. Getting Started
+
+To contribute to this project, please follow these steps:
+
+### Fork the Repository
+1. Go to the repository’s GitHub page.
+2. Click the **Fork** button in the top right corner.
+3. Clone your forked repository:
+   ```bash
+   git clone https://github.com/<your-username>/Microtubule_Simulation.git
+
+	4.	Navigate to the cloned directory:
+
+cd Microtubule_Simulation
+
+
+
+Create a Branch
+	1.	Create a branch for your contribution:
+
+git checkout -b feature-name
+
+
+	2.	Use meaningful names for your branches (e.g., add-documentation, fix-bug-123, enhance-feature).
+
+Install Dependencies
+	1.	Ensure your environment is set up with the required dependencies:
+
+pip install -r requirements.txt
+
+
+	2.	If you encounter issues, refer to README.md or open an issue for help.
+
+2. Coding Standards
+
+To maintain consistency and quality across the codebase, follow these standards:
+
+Follow PEP 8
+	•	Use PEP 8 guidelines for Python code.
+	•	Example tools for checking style:
+
+pip install flake8
+flake8 your_file.py
+
+
+
+Write Meaningful Commit Messages
+	•	Use concise and descriptive messages:
+
+git commit -m "Fix bug in coherence evolution visualization"
+
+
+
+Document Your Code
+	•	Use comments and docstrings to explain the purpose of your code.
+	•	Example:
+
+def combine_plots():
+    """
+    Combines individual plots into a single visualization.
+    """
+    pass
+
+
+
+Maintain an Organized Directory Structure
+	•	Place new scripts in appropriate directories (e.g., src/, tests/).
+	•	Avoid duplicating functionality or creating unnecessary files.
+
+3. Testing Your Code
+
+Run Existing Tests
+	•	If tests are included in the repository, run:
+
+pytest
+
+
+
+Write New Tests
+	•	For new functionality, include unit tests in the tests/ directory.
+	•	Use meaningful names for your test functions:
+
+def test_quantum_coherence_plot():
+    """
+    Ensures that the plot generated matches expected output.
+    """
+    pass
+
+
+
+Check Outputs
+	•	If your code generates visualizations, verify that the plots are saved correctly and meet expectations.
+
+4. Submitting Your Changes
+
+Push Your Branch
+	1.	Push your branch to your forked repository:
+
+git push origin feature-name
+
+
+
+Open a Pull Request
+	1.	Go to the original repository.
+	2.	Click the Pull Requests tab and select New Pull Request.
+	3.	Provide a detailed description of your changes and the issue it addresses.
+
+Address Feedback
+	•	Be responsive to comments and suggestions from reviewers.
+	•	Make necessary changes and update your pull request as needed.
+
+5. Reporting Issues
+
+If you encounter bugs or have ideas for new features, please report them by creating an issue:
+
+Create a New Issue
+	1.	Navigate to the repository’s Issues tab on GitHub.
+	2.	Click New Issue and use a descriptive title.
+	3.	Provide detailed steps to reproduce the issue or describe your feature request.
+
+Include Context
+	•	Add relevant logs, screenshots, or code snippets to help others understand the problem.
+
+6. Code of Conduct
+
+Please adhere to the Code of Conduct when interacting with other contributors. Be respectful, inclusive, and collaborative.
+
+7. Acknowledgments
+
+We appreciate your interest in contributing to this project! Your involvement helps us improve and expand the project, and we value every contribution.
 
 
 ### Thank you for contributing!
