@@ -7,7 +7,7 @@ time = np.linspace(0, 5, 500)  # Time from 0 to 5 seconds
 coherence = np.sin(2 * np.pi * time)  # Example sine wave function
 
 # Save the data to a CSV file
-with open("../MicrotubuleSimulation/simulation_data.csv", "w", newline="") as file:
+with open("simulation_data.csv", "w", newline="") as file:
     writer = csv.writer(file)
     writer.writerow(["Time", "Coherence"])
     for t, c in zip(time, coherence):
