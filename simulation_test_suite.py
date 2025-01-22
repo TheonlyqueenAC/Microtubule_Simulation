@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from fibonacci_simulation_refactored import (
+from MicrotubuleSimulation.fibonacci_simulation_refactored import (
     generate_fibonacci_sequence,
     normalize_fibonacci_sequence,
     initialize_wave_function,
