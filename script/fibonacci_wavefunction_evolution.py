@@ -66,7 +66,7 @@ for i in range(0, time_steps, time_steps // 10):  # Plot 10 snapshots
     plt.plot(x, psi_list[i], label=f'Time {i * dt:.2f}')
 plt.xlabel('Position')
 plt.ylabel('Probability Density |ψ|^2')
-plt.title('Time Evolution of Quantum Coherence')
+plt.title('Time Evolution of Quantum Coherence with Fibonacci Scaling')
 plt.legend()
 plt.savefig('Time_evolution_quantum_coherence.png')  # Save the plot as a PNG file
 plt.show()
