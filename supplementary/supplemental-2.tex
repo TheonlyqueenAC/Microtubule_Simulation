@@ -1,0 +1,83 @@
+\section*{Supplementary Materials}
+
+This document provides detailed mathematical derivations, computational methods, and additional visualizations for the study "Microtubules as Quantum Sanctuary: An Insight into Consciousness." All materials are supplementary to the main manuscript and aim to enhance reproducibility and provide deeper insight into the methods and results. Full code and data are available at \url{https://github.com/TheonlyqueenAC/Microtubule_Simulation}.
+
+\subsection{Mathematical Derivations}
+
+\subsubsection{Scaling Constants}
+
+The mathematical framework for scaling microtubule dimensions to cosmic scales relies on the following transformations:
+\[
+L_{\text{scaled}} = L_{\text{microtubule}} \cdot k_L, \quad
+\]
+where \(k_L\) represents the length scaling constant, determined to align the coherence length with astrophysical event horizon radii.
+
+For temporal and energy scaling:
+\[
+\begin{aligned}
+t_{\text{scaled}} &= t_{\text{microtubule}} \cdot k_T, \\
+E_{\text{scaled}} &= E_{\text{microtubule}} \cdot k_E
+\end{aligned}
+\]
+\(k_T\) and \(k_E\) were selected to preserve the dynamics of coherence and decoherence.
+
+Probability density scaling was performed logarithmically to manage large dynamic ranges:
+\[
+|\Psi|^2_{\text{scaled}} = \log(|\Psi|^2_{\text{microtubule}}).
+\]
+
+\subsubsection{Event Horizon Radius}
+
+The coherence loss under cytokine-induced decoherence is expressed using:
+\[
+r_h = \frac{1}{1 + \frac{\text{mean}(\Gamma_{\text{cytokine}})}{k}},
+\]
+where \(k\) is a proportional scaling factor. The radius quantifies localized quantum coherence boundaries analogous to astrophysical event horizons.
+
+\subsection{Computational Algorithms}
+
+\subsubsection{Wavefunction Evolution}
+
+The evolution of the Gaussian wave packet was simulated using the modified Schr\"odinger equation:
+\[
+i\hbar \frac{\partial \Psi}{\partial t} = -\frac{\hbar^2}{2m} \nabla^2 \Psi + V_{\text{cytokine}}(r, z, t) \Psi - \Gamma_{\text{cytokine}}(r, z, t) \Psi,
+\]
+where:
+- \(V_{\text{cytokine}}(r, z, t)\) models spatially and temporally varying cytokine-induced potentials.
+- \(\Gamma_{\text{cytokine}}(r, z, t)\) introduces decoherence terms.
+
+Finite-difference methods were implemented for spatial and temporal discretization, with boundary conditions enforcing coherence preservation at the edges.
+
+\subsubsection{Cytokine Gradient Simulation}
+
+The cytokine diffusion equation:
+\[
+\frac{\partial C(r, z, t)}{\partial t} = D_c \nabla^2 C - \kappa_c C
+\]
+was solved numerically, where:
+- \(D_c\) is the cytokine diffusion coefficient.
+- \(\kappa_c\) represents the cytokine degradation rate.
+
+\subsection{Additional Figures}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/scaling_validation.png}
+\caption{Validation of scaled microtubule dynamics against baseline unscaled results. The plot demonstrates alignment of scaled coherence zones with expected astrophysical boundaries.}
+\label{fig:scaling_validation}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/numerical_accuracy.png}
+\caption{Numerical accuracy of the finite-difference method used for wavefunction evolution. Convergence tests confirm stability across grid resolutions.}
+\label{fig:numerical_accuracy}
+\end{figure}
+
+\subsection{Code Availability}
+
+The complete simulation code, including test scripts, is available at \url{https://github.com/TheonlyqueenAC/Microtubule_Simulation}. Key functions include:
+- $`simulate_wavefunction`:$ Solves the Schr\"odinger equation with cytokine perturbations.
+- $`cytokine_diffusion`$: Computes cytokine gradients using the diffusion equation.
+- $`visualize_results`$: Generates visualizations of coherence dynamics and event horizon boundaries.
+
