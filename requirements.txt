@@ -1,0 +1,3 @@
+pytest
+flake8
+numpy  # Example dependency, modify as needed
