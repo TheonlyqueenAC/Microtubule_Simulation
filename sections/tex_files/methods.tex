@@ -1,67 +1,45 @@
-?%--------------------?
-?% Methods?
-?%--------------------?
-?\section{Methods}?
+\section{Methods}
+\subsection{Mathematical Framework}
+Given that direct empirical measurement of quantum coherence in microtubules is currently infeasible, this study adapts mathematical scaling principles from astrophysics to model potential stabilization mechanisms. Fibonacci scaling is selected because it:
+\begin{enumerate}
+    \item Has been successfully applied in astrophysical models to describe boundary-like coherence regions, similar to the behavior hypothesized in microtubules.
+    \item Is prevalent in biological systems, including neuronal growth patterns, protein folding, and cytoskeletal structures, suggesting a fundamental role in biological self-organization.
+    \item Provides a computationally feasible method to analyze coherence persistence without requiring direct experimental observation.
+\end{enumerate}
 
-?\subsection{Mathematical Framework}?
-This study uses a computational approach to simulate the evolution of quantum ?
-coherence in microtubules under cytokine-induced perturbations. To explore these ?
-dynamics, microtubule systems were scaled to cosmic dimensions to integrate universal ?
-mathematical principles.?
+Transformation equations (Equations \ref{eq:dim_scale}–\ref{eq:event_horizon}) apply Fibonacci scaling factors $\alpha$, $\beta$, and $\gamma$ to model coherence-stabilizing structures in microtubules, similar to their use in astrophysical event horizons.
 
-?\begin{enumerate}?
-?    \item \textbf{Dimensional Scaling:} The lengths, time scales, and energy levels of ?
-microtubule processes were normalized using scaling constants:?
-?    \begin{equation}?
-?    L' = \alpha L, \quad T' = \beta T, \quad E' = \gamma E
-?    \end{equation}?
-?    where $\alpha$, $\beta$, and $\gamma$ were chosen to align coherence length and ?
-time with astrophysical dimensions.?
-?    ?
-?    \item \textbf{Wavefunction Scaling:} The wavefunction's probability density was ?
-logarithmically scaled:?
-?    \begin{equation}?
-?    \Psi' (x,t) = \log{\Psi(x,t)}?
-?    \end{equation}?
-?    ?
-?    \item \textbf{Event Horizon Radius:} Coherence loss due to cytokine-induced ?
-decoherence was expressed as:?
-?    \begin{equation}?
-?    R_h = \xi \cdot f(C),?
-?    \end{equation}?
-?    where $\xi$ is a proportional scaling factor, and $f(C)$ represents the perturbation ?
-effects of cytokine concentrations.?
-?\end{enumerate}?
+\begin{itemize}
+    \item \textbf{Dimensional Scaling:} Microtubular processes are mapped onto astrophysical dimensions to explore coherence stabilization under Fibonacci scaling:
+    \begin{equation}
+        L' = \alpha L, \quad T' = \beta T, \quad E' = \gamma E
+        \label{eq:dim_scale}
+    \end{equation}
+    where $\alpha$, $\beta$, and $\gamma$ are scaling factors that align coherence length and time with universal patterns.
+\subsection{Computational Framework}
+\item A Schrödinger equation-based quantum simulation was developed to model coherence decay in microtubules exposed to cytokine-induced perturbations:
+\begin{equation}
+i\hbar \frac{\partial \Psi}{\partial t} = -\frac{\hbar^2}{2m} \nabla^2 \Psi + V_{\text{cytokine}}(x, y, t) \Psi - \Gamma_{\text{HIV}}(x, y, t) \Psi
+\end{equation}
+where \( V_{\text{cytokine}}(x, y, t) \) represents cytokine-induced decoherence effects, and \( \Gamma_{\text{HIV}}(x, y, t) \) models direct neurotoxic effects of HIV proteins.
 
-?\subsection{Computational Algorithms}?
-?\begin{enumerate}?
-?    \item \textbf{Wavefunction Evolution:} Quantum state evolution was modeled using the ?
-modified Schrdinger equation:?
-?    \begin{equation}?
-?    i\hbar \frac{\partial \Psi}{\partial t} = \left[-\frac{\hbar^2}{2m}\nabla^2 + ?
-V(x,t)\right]\Psi(x,t)?
-?    \end{equation}?
-?    where $V(x,t)$ represents the cytokine-induced potentials, and additional terms ?
-incorporate decoherence effects. The finite-difference method was used for spatial and ?
-temporal discretization, with boundary conditions ensuring coherence preservation at the ?
-edges.?
-?    ?
-?    \item \textbf{Cytokine Gradient Simulation:} The cytokine diffusion equation:?
-?    \begin{equation}?
-?    \frac{\partial C}{\partial t} = D \nabla^2 C - \lambda C
-?    \end{equation}?
-?    was solved numerically, where $D$ is the cytokine diffusion coefficient, and $\lambda$ ?
-represents the degradation rate.?
-?\end{enumerate}?
-
-?\subsection{Visualizations}?
-Dynamic visual outputs were generated to illustrate quantum coherence and event ?
-horizon-like boundaries within the microtubule lattice. Specific scripts from the GitHub ?
-repository (e.g., \texttt{microtubule_coherence_simulation.py}, ?
-?\texttt{fibonacci_wavefunction_evolution.py}, \texttt{cylindrical_geo_microtubule.py}, ?
-?\texttt{two_dimensional_wavefunction_cylinder.py}, ?
-?\texttt{cytokine_event_horizon_overlay.py} and ?
-?\texttt{wavefunction_cytokine_cosmic_scaled.py}) were used to produce 1D and 2D plots.?
-
-?%--------------------?
-
+\item A 2D finite-difference cytokine diffusion model was implemented:
+\begin{equation}
+\frac{\partial C(x, y, t)}{\partial t} = D_c \nabla^2 C - k_c C + S(x, y, t)
+\end{equation}
+where \( D_c \) is the cytokine diffusion coefficient, \( k_c \) is the degradation rate, and \( S(x, y, t) \) represents HIV-driven cytokine release.
+\item \textbf{Event Horizon Analogy:} The formation of coherence-preserving boundaries in microtubules is modeled using an equation analogous to black hole event horizons:
+    \begin{equation}
+        R_h = \xi \cdot f(C)
+        \label{eq:event_horizon}
+    \end{equation}
+    where $R_h$ represents a coherence-preserving boundary, and $f(C)$ models cytokine-induced perturbation effects.
+\item Event horizon models the formation of coherence-preserving boundaries in microtubules was modeled using:
+\begin{equation}
+R_h = \xi \cdot f(C)
+\end{equation}
+where $R_h$ represents the coherence boundary, and $f(C)$ scales with cytokine load.
+These transformations suggest that microtubules exhibit self-stabilizing properties that could enable quantum coherence to persist in the brain despite environmental noise.
+\end{itemize}
+\subsection{Visualizations}
+Dynamic visual outputs were generated to illustrate quantum coherence and event horizon-like boundaries within the microtubule lattice. The specific scripts used for these visualizations are available in the \href{https://github.com/TheonlyqueenAC/Microtubule_Simulation}{GitHub repository}.
