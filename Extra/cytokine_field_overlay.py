@@ -93,7 +93,17 @@ contour = plt.contourf(Z, R, final_psi_density, levels=50, cmap='viridis')
 cbar = plt.colorbar(contour, label='|Ψ|^2')
 
 # Overlay event horizon
-plt.axhline(r_h, color='red', linestyle='--', label=f'Event Horizon Radius (r_h = {r_h:.2f})')
+def draw_horizontal_line(y_value, color, style, label_text):
+    """Draw a styled horizontal line on the plot."""
+    plt.axhline(y_value, color=color, linestyle=style, label=label_text)
+
+
+# Parameters
+line_style = '--'
+label_text = f'Event Horizon Radius (r_h = {r_h:.2f})'
+
+# Draw the horizontal line
+draw_horizontal_line(r_h, 'red', line_style, label_text)
 
 
 # Ensure proper labeling for all elements
