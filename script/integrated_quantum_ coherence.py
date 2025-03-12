@@ -74,7 +74,6 @@ def calculate_event_horizon(Gamma):
     r_h_scaled = R_inner + (R_outer - R_inner) * r_h / np.max(r_h)
     return r_h_scaled
 
-
 # Potential and decoherence setup
 V_base = 5.0 * np.cos(2 * np.pi * Z / L)  # Base potential from tubulin
 V_walls = np.zeros_like(R)
@@ -140,7 +139,6 @@ def calculate_variance(Psi, R, Z, dr, dz):
     var_z = np.sum((Z - z_mean) ** 2 * np.abs(Psi) ** 2 * r[:, None]) * dr * dz
     return var_r + var_z  # Total spatial variance
 
-
 # Store initial state
 Psi_reg_list.append(np.abs(Psi_reg) ** 2)
 Psi_fib_list.append(np.abs(Psi_fib) ** 2)
@@ -203,7 +201,7 @@ cbar_fib = plt.colorbar(contour_fib, ax=ax_fib)
 cbar_cyt = plt.colorbar(contour_cyt, ax=ax_cyt)
 
 # Set titles and labels
-ax_reg.set_title('Standard Grid')
+ax_reg.set_title('Uniform Grid')
 ax_fib.set_title('Fibonacci-Scaled Grid')
 ax_cyt.set_title('Cytokine Perturbation')
 
@@ -213,7 +211,7 @@ for ax in [ax_reg, ax_fib, ax_cyt]:
     ax.legend()
 
 # Set up variance comparison plot
-var_reg_line, = ax_var.plot([0], variance_reg[:1], 'b-', linewidth=2, label='Standard Grid')
+var_reg_line, = ax_var.plot([0], variance_reg[:1], 'b-', linewidth=2, label='Uniform Grid')
 var_fib_line, = ax_var.plot([0], variance_fib[:1], 'r-', linewidth=2, label='Fibonacci-Scaled')
 ax_var.set_xlabel('Time Step')
 ax_var.set_ylabel('Wavefunction Variance')
@@ -223,7 +221,7 @@ ax_var.grid(True)
 
 # Set up axial profile plot
 z_vals = np.linspace(0, L, N_z)
-prof_reg, = ax_prof.plot(z_vals, np.mean(Psi_reg_list[0], axis=0), 'b-', linewidth=2, label='Standard Grid')
+prof_reg, = ax_prof.plot(z_vals, np.mean(Psi_reg_list[0], axis=0), 'b-', linewidth=2, label='Uniform Grid')
 prof_fib, = ax_prof.plot(z_vals, np.mean(Psi_fib_list[0], axis=0), 'r-', linewidth=2, label='Fibonacci-Scaled')
 ax_prof.set_xlabel('Axial Position (z)')
 ax_prof.set_ylabel('Mean Probability Density')
@@ -235,44 +233,54 @@ ax_prof.grid(True)
 # Animation update function
 def update(frame):
     # Clear main plots
-    for ax in [ax_reg, ax_fib, ax_cyt]:
-        ax.clear()
+    ax_reg.clear()
+    ax_fib.clear()
+    ax_cyt.clear()
 
-    # Update contour plots
+    # Contour plots
     contour_reg = ax_reg.contourf(Z, R, Psi_reg_list[frame], levels=50, cmap=density_cmap)
     contour_fib = ax_fib.contourf(Z, R, Psi_fib_list[frame], levels=50, cmap=density_cmap)
     contour_cyt = ax_cyt.contourf(Z, R, cytokine_list[frame], levels=50, cmap=cytokine_cmap)
 
-    # Add event horizon overlays
+    # Event horizon overlays clearly at each step
     ax_reg.plot(z, event_horizon_list[frame], 'r--', linewidth=2, label='Event Horizon')
     ax_fib.plot(z, event_horizon_list[frame], 'r--', linewidth=2, label='Event Horizon')
 
-    # Set titles with time indication
+    # Titles with time
     actual_time = frame * save_interval * dt
-    ax_reg.set_title(f'Standard Grid (t={actual_time:.2f})')
+    ax_reg.set_title(f'Uniform Grid (t={actual_time:.2f})')
     ax_fib.set_title(f'Fibonacci-Scaled Grid (t={actual_time:.2f})')
     ax_cyt.set_title(f'Cytokine Perturbation (t={actual_time:.2f})')
 
-    # Set labels
+    # Consistent labels and axis limits
     for ax in [ax_reg, ax_fib, ax_cyt]:
         ax.set_xlabel('Axial Position (z)')
         ax.set_ylabel('Radial Position (r)')
-        ax.legend()
+        ax.set_xlim(0, L)
+        ax.set_ylim(R_inner, R_outer)
+        ax.legend(loc='upper right')
 
     # Update variance plot
     var_reg_line.set_data(range(frame + 1), variance_reg[:frame + 1])
     var_fib_line.set_data(range(frame + 1), variance_fib[:frame + 1])
     ax_var.relim()
     ax_var.autoscale_view()
+    ax_var.set_xlabel('Time Step')
+    ax_var.set_ylabel('Wavefunction Variance')
+    ax_var.grid(True)
+    ax_var.legend()
 
-    # Update profile plot
+    # Update axial profile plot
     prof_reg.set_ydata(np.mean(Psi_reg_list[frame], axis=0))
     prof_fib.set_ydata(np.mean(Psi_fib_list[frame], axis=0))
     ax_prof.relim()
     ax_prof.autoscale_view()
+    ax_prof.set_xlabel('Axial Position (z)')
+    ax_prof.set_ylabel('Mean Probability Density')
+    ax_prof.grid(True)
+    ax_prof.legend()
 
     return [contour_reg, contour_fib, contour_cyt, var_reg_line, var_fib_line, prof_reg, prof_fib]
-
 
 # Create animation
 ani = FuncAnimation(fig, update, frames=len(Psi_reg_list), interval=200, blit=False)
@@ -288,7 +296,7 @@ plt.figure(figsize=(18, 10))
 plt.subplot(2, 3, 1)
 plt.contourf(Z, R, Psi_reg_list[-1], levels=50, cmap=density_cmap)
 plt.plot(z, event_horizon_list[-1], 'r--', linewidth=2)
-plt.title('Final Standard Grid')
+plt.title('Final Uniform Grid')
 plt.xlabel('Axial Position (z)')
 plt.ylabel('Radial Position (r)')
 plt.colorbar()
@@ -309,7 +317,7 @@ plt.ylabel('Radial Position (r)')
 plt.colorbar()
 
 plt.subplot(2, 3, 4)
-plt.plot(range(len(variance_reg)), variance_reg, 'b-', label='Standard Grid')
+plt.plot(range(len(variance_reg)), variance_reg, 'b-', label='Uniform Grid')
 plt.plot(range(len(variance_fib)), variance_fib, 'r-', label='Fibonacci-Scaled')
 plt.xlabel('Time Step')
 plt.ylabel('Wavefunction Variance')
@@ -326,7 +334,7 @@ plt.title('Fibonacci Coherence Improvement')
 plt.grid(True)
 
 plt.subplot(2, 3, 6)
-plt.plot(z, np.mean(Psi_reg_list[-1], axis=0), 'b-', label='Standard Grid')
+plt.plot(z, np.mean(Psi_reg_list[-1], axis=0), 'b-', label='Uniform Grid')
 plt.plot(z, np.mean(Psi_fib_list[-1], axis=0), 'r-', label='Fibonacci-Scaled')
 plt.xlabel('Axial Position (z)')
 plt.ylabel('Mean Probability Density')

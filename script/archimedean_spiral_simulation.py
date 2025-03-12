@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import pandas as pd
+import csv  # Used to export data as CSV without requiring pandas
 
 # Parameters for the spiral
 a = 0  # Initial radius
@@ -30,10 +30,16 @@ plt.ylabel('Y')
 plt.title('Spiral Path with Coherence')
 plt.legend()
 plt.axis('equal')  # Ensure the spiral looks circular
-# Export data
+
+# Export data using the csv module
 time = theta  # Use theta as the time variable
-data = {"Time": time, "Coherence": coherence}
-df = pd.DataFrame(data)
-df.to_csv("ArchSpir_Coherence_Simulation_Data.csv", index=False)
+data = zip(time, coherence)  # Combine the data into a single iterable
+
+# Write the data to a CSV file
+with open("../data files/datafiles/ArchSpir_Coherence_Simulation_Data.csv", mode="w", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerow(["Time", "Coherence"])  # Write the column headers
+    writer.writerows(data)  # Write the data rows
+
 print("Data exported to ArchSpir_Coherence_Simulation_Data.csv")
 plt.show()
